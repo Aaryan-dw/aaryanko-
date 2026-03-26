@@ -2,13 +2,6 @@
 import React from 'react';
 
 const HeroSection = () => {
-  const handleScrollDown = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <header id="home" className="min-h-screen hero-bg flex items-center pt-20 md:pt-24">
       <div className="max-w-screen-2xl mx-auto px-4 md:px-8 py-6 md:py-12">
@@ -84,7 +77,7 @@ const HeroSection = () => {
               <div className="relative bg-gradient-to-br from-[#00ff9d]/10 to-zinc-900 rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 border border-white/20">
                 <div className="overflow-hidden rounded-xl sm:rounded-2xl">
                   <img 
-                    src="/aaryan.jpeg"  // Replace with your actual photo filename
+                    src="/your-photo.jpg"  // Replace with your actual photo filename
                     alt="Aaryan Koirala"
                     className="w-full h-auto object-cover rounded-xl sm:rounded-2xl hover:scale-105 transition-transform duration-500"
                   />
@@ -111,15 +104,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-
-      {/* Scroll Button - Responsive */}
-      <button 
-        onClick={handleScrollDown}
-        className="absolute bottom-6 md:bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 md:gap-2 text-[10px] md:text-xs tracking-[2px] opacity-50 hover:opacity-100 transition-all cursor-pointer group"
-      >
-        <span className="group-hover:tracking-[3px] transition-all">SCROLL FOR MORE</span>
-        <i className="fa-solid fa-chevron-down animate-bounce group-hover:translate-y-1 transition-transform"></i>
-      </button>
     </header>
   );
 };
