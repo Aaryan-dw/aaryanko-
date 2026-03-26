@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aaryan Koirala - Software Developer Portfolio">
+    <title>Aaryan Koirala | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --accent: #00ff9d;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .hero-text {
+            animation: glitch 2s infinite linear alternate;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #00ff9d;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #00ff9d, transparent);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(0 255 157 / 0.15);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at center, rgba(0, 255, 157, 0.08) 0%, transparent 70%);
+        }
+
+        .contact-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .contact-icon:hover {
+            transform: scale(1.15) rotate(8deg);
+            background-color: #00ff9d;
+            color: #000;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-[#00ff9d] rounded-2xl flex items-center justify-center text-black font-bold text-xl rotate-12">AK</div>
+                <h1 class="heading-font text-2xl font-semibold tracking-tighter">AARYAN</h1>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-10 text-sm uppercase tracking-widest font-medium">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/Aaryan-dw" target="_blank" class="flex items-center gap-2 text-sm hover:text-[#00ff9d]">
+                    <i class="fa-brands fa-github"></i>
+                    <span class="hidden sm:inline">GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/aaryan69koirala" target="_blank" class="flex items-center gap-2 text-sm hover:text-[#00ff9d]">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span class="hidden sm:inline">LinkedIn</span>
+                </a>
+                
+                <a href="file:///A:/projects/aaaryan.pdf" download="Aaryan-Koirala-CV.pdf"
+                   class="px-6 py-3 bg-white text-black font-semibold rounded-3xl flex items-center gap-2 hover:bg-[#00ff9d] hover:text-black uppercase text-xs tracking-widest">
+                    <i class="fa-solid fa-download"></i>
+                    <span>CV</span>
+                </a>
+                
+                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
+                    <i id="hamburger-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-white/10 px-8 py-6">
+            <div class="flex flex-col gap-6 text-lg font-medium">
+                <a href="#about" onclick="toggleMobileMenu()" class="py-2">About</a>
+                <a href="#projects" onclick="toggleMobileMenu()" class="py-2">Projects</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="py-2">Skills</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="min-h-screen hero-bg flex items-center pt-20">
+        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 text-white text-sm px-5 py-2 rounded-3xl backdrop-blur-md border border-white/20">
+                    <div class="w-2 h-2 bg-[#00ff9d] rounded-full animate-pulse"></div>
+                    SECOND-YEAR COMPUTING STUDENT • NEPAL
+                </div>
+                
+                <h1 class="heading-font text-7xl md:text-8xl lg:text-[6.5rem] leading-none font-black tracking-[-4px] hero-text">
+                    AARYAN<br>KOIRALA
+                </h1>
+                
+                <p class="text-3xl md:text-4xl text-zinc-400 font-light">
+                    Full-Stack MERN • Python • Building real tools for real problems
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="px-8 py-5 bg-[#00ff9d] text-black font-semibold rounded-3xl flex items-center gap-3 text-lg hover:scale-105">
+                        SEE MY WORK
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-5 border border-white/30 hover:border-[#00ff9d] rounded-3xl flex items-center gap-3 text-lg">
+                        LET'S CONNECT
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 text-sm">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-location-dot text-[#00ff9d]"></i>
+                        <span>Biratchowk, Morang, Nepal</span>
+                    </div>
+                    <a href="mailto:aaryankoirala20@email.com" class="flex items-center gap-3 hover:text-[#00ff9d]">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>aaryankoirala20@email.com</span>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
+                    <div>
+                        <div class="text-[#00ff9d] text-5xl font-bold">3</div>
+                        <div class="text-zinc-500 text-sm tracking-widest">PROJECTS SHIPPED</div>
+                    </div>
+                    <div>
+                        <div class="text-[#00ff9d] text-5xl font-bold">MERN</div>
+                        <div class="text-zinc-500 text-sm tracking-widest">FULL-STACK</div>
+                    </div>
+                    <div>
+                        <div class="text-[#00ff9d] text-5xl font-bold">2027</div>
+                        <div class="text-zinc-500 text-sm tracking-widest">GRADUATING</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex justify-end">
+                <div class="relative w-96 h-96 lg:w-[420px] lg:h-[420px] flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#00ff9d]/10 to-transparent rounded-[4rem] rotate-12"></div>
+                    <div class="w-80 h-80 bg-zinc-900 border border-white/10 rounded-3xl flex items-center justify-center overflow-hidden relative">
+                        <div class="text-center">
+                            <div class="text-8xl mb-6">🚀</div>
+                            <p class="text-2xl font-medium">Currently building<br>with MERN + Python</p>
+                            <div class="mt-8 flex justify-center gap-2">
+                                <div class="px-4 py-1 bg-white/10 rounded-3xl text-xs">MONGODB</div>
+                                <div class="px-4 py-1 bg-white/10 rounded-3xl text-xs">REACT</div>
+                                <div class="px-4 py-1 bg-white/10 rounded-3xl text-xs">NODE</div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -top-4 -right-4 bg-white text-black text-xs font-bold px-5 py-2 rounded-3xl rotate-12 shadow-xl">INVENTORY SYSTEM</div>
+                        <div class="absolute -bottom-6 -left-6 bg-[#00ff9d] text-black text-xs font-bold px-5 py-2 rounded-3xl -rotate-12 shadow-xl">VIDEO → AUDIO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-12 left-1/2 flex flex-col items-center gap-2 text-xs tracking-[2px] opacity-50">
+            SCROLL FOR MORE
+            <i class="fa-solid fa-chevron-down animate-bounce"></i>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-screen-2xl mx-auto px-8 py-24 border-t border-white/10">
+        <div class="grid md:grid-cols-12 gap-16">
+            <div class="md:col-span-5">
+                <h2 class="section-header text-5xl heading-font font-semibold tracking-tighter mb-6">ABOUT ME</h2>
+                <p class="text-zinc-400 text-lg leading-relaxed">
+                    Second-year BSc (Hons) Computing student at Itahari International College. 
+                    Passionate about building practical tools that solve real problems — especially for small businesses in Nepal.
+                </p>
+                <div class="mt-8 flex items-center gap-4">
+                    <div class="text-xs uppercase bg-white/10 px-5 py-3 rounded-3xl">🇳🇵 NEPAL</div>
+                    <div class="text-xs uppercase bg-white/10 px-5 py-3 rounded-3xl">LONDON METROPOLITIAN UNIVERSITY</div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-7 text-lg leading-relaxed text-zinc-300 fade-in">
+                <p class="mb-6">
+                    I have hands-on experience in full-stack MERN development, Python scripting, and database design using MySQL and MongoDB. 
+                    Completed multiple independent projects solving real-world problems in inventory management and media conversion.
+                </p>
+                <p>
+                    Seeking a software development internship to deepen technical expertise, contribute to production-level products, 
+                    and grow under experienced engineering mentorship.
+                </p>
+                
+                <div class="mt-16">
+                    <h3 class="text-[#00ff9d] text-sm tracking-widest mb-3">EDUCATION</h3>
+                    <div class="flex justify-between items-baseline border-l-2 border-[#00ff9d] pl-6">
+                        <div>
+                            <p class="font-semibold">BSc (Hons) Computing</p>
+                            <p class="text-zinc-400">Itahari International College • Affiliated with London Metropolitan University</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-mono text-sm">2024 — 2027</p>
+                            <p class="text-xs text-zinc-500">Running</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="max-w-screen-2xl mx-auto px-8 py-24 bg-black border-t border-b border-white/10">
+        <div class="mb-12">
+            <h2 class="section-header text-5xl heading-font font-semibold tracking-tighter">PROJECTS</h2>
+            <p class="text-zinc-400 mt-3">Real tools. Built from scratch.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Add your three project cards here (same as before) -->
+        </div>
+    </section>
+
+    <!-- CONTACT - Google Form -->
+    <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-24 bg-black border-t border-white/10">
+        <div class="grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="section-header text-5xl heading-font font-semibold tracking-tighter mb-8">LET'S BUILD SOMETHING</h2>
+                <p class="text-2xl text-zinc-400">Open to internships, collaborations, or just a chat about tech in Nepal.</p>
+                
+                <div class="mt-12 space-y-6">
+                    <!-- Phone -->
+                    <a href="tel:+9779844012034" class="flex items-center gap-6 group">
+                        <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-2xl contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-medium">+977 9844012034</p>
+                            <p class="text-sm text-zinc-500">Call or WhatsApp</p>
+                        </div>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:aaryankoirala20@email.com" class="flex items-center gap-6 group">
+                        <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-2xl contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.568 2.13l-7.5 3.75a2.25 2.25 0 01-1.864 0l-7.5-3.75A2.25 2.25 0 012.25 7.243V6.75" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-medium">aaryankoirala20@email.com</p>
+                            <p class="text-sm text-zinc-500">Drop me a line</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Google Form -->
+            <div class="bg-zinc-900/50 border border-white/10 rounded-3xl p-8">
+                <form action="https://docs.google.com/forms/d/e/1FAIpQLSc5FOr8vafiv9CFrPM-WrvRedMsHEAYDc3p_eeDUcxJcqCFFg/formResponse" 
+                      method="POST" 
+                      target="_blank"
+                      class="space-y-6">
+                    <div>
+                        <input type="text" name="entry.238224347" placeholder="Your name" required
+                               class="w-full bg-transparent border border-white/30 focus:border-[#00ff9d] rounded-3xl px-6 py-5 outline-none">
+                    </div>
+
+                    <div>
+                        <input type="email" name="entry.179831632" placeholder="Email address" required
+                               class="w-full bg-transparent border border-white/30 focus:border-[#00ff9d] rounded-3xl px-6 py-5 outline-none">
+                    </div>
+
+                    <div>
+                        <textarea name="entry.1434433526" rows="5" placeholder="What are we building?" required
+                                  class="w-full bg-transparent border border-white/30 focus:border-[#00ff9d] rounded-3xl px-6 py-5 outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full py-6 bg-[#00ff9d] text-black font-semibold rounded-3xl flex items-center justify-center gap-3 text-lg hover:scale-105">
+                        SEND MESSAGE
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 py-12 text-center text-xs text-zinc-500">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            © 2026 Aaryan Koirala
+            <div class="mt-4 flex justify-center gap-6 text-lg">
+                <a href="https://github.com/Aaryan-dw" target="_blank" class="hover:text-[#00ff9d]"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/aaryan69koirala" target="_blank" class="hover:text-[#00ff9d]"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu')
+            const icon = document.getElementById('hamburger-icon')
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden')
+                icon.classList.replace('fa-bars', 'fa-xmark')
+            } else {
+                menu.classList.add('hidden')
+                icon.classList.replace('fa-xmark', 'fa-bars')
+            }
+        }
+        
+        function handleScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible')
+                    }
+                })
+            }, { threshold: 0.15 })
+            
+            document.querySelectorAll('.fade-in').forEach((el) => {
+                observer.observe(el)
+            })
+        }
+        
+        window.onload = function() {
+            handleScrollAnimations()
+            
+            console.log("%cissaaaryanissavibeissaenergyissapositivebaby.", "color:#00ff9d; font-family:monospace");
+            console.log("%cDesign refs: yeezy.com for the minimal feel + playboicarti.com for the bold touches.", "color:#888; font-family:monospace");
+        }
+    </script>
+</body>
+</html>
