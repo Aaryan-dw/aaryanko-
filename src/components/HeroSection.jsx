@@ -77,7 +77,7 @@ const HeroSection = () => {
               <div className="relative bg-gradient-to-br from-[#00ff9d]/10 to-zinc-900 rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 border border-white/20">
                 <div className="overflow-hidden rounded-xl sm:rounded-2xl">
                   <img 
-                    src="/aaryan.jpg"  // Replace with your actual photo filename
+                    src="/aaryan.jpeg"  // Replace with your actual photo filename
                     alt="Aaryan Koirala"
                     className="w-full h-auto object-cover rounded-xl sm:rounded-2xl hover:scale-105 transition-transform duration-500"
                   />
