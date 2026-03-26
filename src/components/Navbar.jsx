@@ -1,4 +1,4 @@
-// components/navbar.jsx
+// components/Navbar.jsx
 import React, { useState } from 'react';
 
 const Navbar = () => {
