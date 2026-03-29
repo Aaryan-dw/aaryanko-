@@ -14,7 +14,7 @@ const projectsData = [
     description: "Full-stack business management system for small businesses in Nepal. Inventory tracking, sales reporting, and customer management with MERN stack.",
     tags: ["MongoDB", "Express", "React", "Node.js", "Tailwind CSS"],
     icon: "fa-store",
-    link: "https://github.com/Aaryan-dw/meroByapar---Business-Management-System"
+    link: "https://github.com/2024-manoj/MeroByapar.git"
   },
   {
     title: "ConvertIT",
