@@ -1,8 +1,37 @@
 // components/Navbar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOriginalMode, setIsOriginalMode] = useState(true); // default = ORIGINAL (dark)
+
+  // Load saved theme from localStorage on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'original';
+    const isOriginal = savedTheme === 'original';
+    setIsOriginalMode(isOriginal);
+
+    if (isOriginal) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newMode = !isOriginalMode;
+    setIsOriginalMode(newMode);
+
+    if (newMode) {
+      // Switch to ORIGINAL (dark)
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'original');
+    } else {
+      // Switch to WHITE (light)
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'white');
+    }
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -13,7 +42,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-8 py-3 md:py-4 flex items-center justify-between">
         {/* Logo - Left */}
         <div className="flex items-center gap-2 md:gap-3">
@@ -23,24 +52,41 @@ const Navbar = () => {
           <h1 className="heading-font text-lg md:text-2xl font-semibold tracking-tighter">AARYAN</h1>
         </div>
 
-        {/* Nav Links - Centered using absolute positioning */}
+        {/* Nav Links - Centered */}
         <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
           <div className="flex items-center gap-6 lg:gap-8 text-xs uppercase tracking-widest font-medium">
-            {/* <a href="#home" className='nav-link'>Home</a> */}
-            <a href="#about" className="nav-link">About</a>
-            <a href="#projects" className="nav-link">Projects</a>
-            <a href="#skills" className="nav-link">Skills</a>
-            <a href="#contact" className="nav-link">Contact</a>
+            <a href="#about" className="nav-link hover:text-[#00ff9d] dark:hover:text-[#00ff9d]">About</a>
+            <a href="#projects" className="nav-link hover:text-[#00ff9d] dark:hover:text-[#00ff9d]">Projects</a>
+            <a href="#skills" className="nav-link hover:text-[#00ff9d] dark:hover:text-[#00ff9d]">Skills</a>
+            <a href="#contact" className="nav-link hover:text-[#00ff9d] dark:hover:text-[#00ff9d]">Contact</a>
           </div>
         </div>
 
-        {/* Right side buttons */}
+        {/* Right side: Theme Toggle + Socials + CV */}
         <div className="flex items-center gap-3 md:gap-4">
+          
+          {/* === THEME TOGGLE BUTTON === */}
+          <button
+            onClick={toggleTheme}
+            className="flex items-center gap-2 px-4 py-2 rounded-3xl bg-zinc-100 hover:bg-zinc-200 dark:bg-white/10 dark:hover:bg-white/20 text-xs md:text-sm font-medium uppercase tracking-widest transition-all"
+          >
+            {isOriginalMode ? (
+              <>
+                <span className="hidden sm:inline">WHITE</span>
+              </>
+            ) : (
+              <>
+                <span className="hidden sm:inline">ORIGINAL</span>
+              </>
+            )}
+          </button>
+
           <a href="https://github.com/Aaryan-dw" target="_blank" rel="noopener noreferrer" 
              className="flex items-center gap-1 md:gap-2 text-xs md:text-sm hover:text-[#00ff9d] transition-colors">
             <i className="fa-brands fa-github text-sm md:text-base"></i>
             <span className="hidden sm:inline">GitHub</span>
           </a>
+          
           <a href="https://linkedin.com/in/aaryan69koirala" target="_blank" rel="noopener noreferrer" 
              className="flex items-center gap-1 md:gap-2 text-xs md:text-sm hover:text-[#00ff9d] transition-colors">
             <i className="fa-brands fa-linkedin text-sm md:text-base"></i>
@@ -48,7 +94,7 @@ const Navbar = () => {
           </a>
 
           <a href="koiralaAaryan.pdf" download="Aaryan-Koirala-CV.pdf"
-             className="px-3 md:px-5 py-1.5 md:py-2.5 bg-white text-black font-semibold rounded-full md:rounded-2xl flex items-center gap-1 md:gap-2 hover:bg-[#00ff9d] hover:text-black uppercase text-[10px] md:text-xs tracking-widest transition-all">
+             className="px-3 md:px-5 py-1.5 md:py-2.5 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-full md:rounded-2xl flex items-center gap-1 md:gap-2 hover:bg-[#00ff9d] hover:text-black uppercase text-[10px] md:text-xs tracking-widest transition-all">
             <i className="fa-solid fa-download text-xs md:text-sm"></i>
             <span>CV</span>
           </a>
@@ -59,10 +105,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div id="mobile-menu" className={`md:hidden bg-zinc-950 border-t border-white/10 px-6 py-4 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-        <div className="flex flex-col gap-4 text-base font-medium">
-          <a href="#home" onClick={closeMobileMenu} className="py-1 hover:text-[#00ff9d] transition-colors">Home</a>
+      {/* Mobile Menu - also theme aware */}
+      <div id="mobile-menu" className={`md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-white/10 px-6 py-4 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+        <div className="flex flex-col gap-4 text-base font-medium text-zinc-900 dark:text-white">
           <a href="#about" onClick={closeMobileMenu} className="py-1 hover:text-[#00ff9d] transition-colors">About</a>
           <a href="#projects" onClick={closeMobileMenu} className="py-1 hover:text-[#00ff9d] transition-colors">Projects</a>
           <a href="#skills" onClick={closeMobileMenu} className="py-1 hover:text-[#00ff9d] transition-colors">Skills</a>
