@@ -26,7 +26,7 @@ const Navbar = () => {
         {/* Nav Links - Centered using absolute positioning */}
         <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
           <div className="flex items-center gap-6 lg:gap-8 text-xs uppercase tracking-widest font-medium">
-            <a href="#HeroSection" className='nav-link'>Home</a>
+            <a href="#home" className='nav-link'>Home</a>
             <a href="#about" className="nav-link">About</a>
             <a href="#projects" className="nav-link">Projects</a>
             <a href="#skills" className="nav-link">Skills</a>
@@ -62,6 +62,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div id="mobile-menu" className={`md:hidden bg-zinc-950 border-t border-white/10 px-6 py-4 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <div className="flex flex-col gap-4 text-base font-medium">
+          <a href="#home" onClick={closeMobileMenu} className="py-1 hover:text-[#00ff9d] transition-colors">Home</a>
           <a href="#about" onClick={closeMobileMenu} className="py-1 hover:text-[#00ff9d] transition-colors">About</a>
           <a href="#projects" onClick={closeMobileMenu} className="py-1 hover:text-[#00ff9d] transition-colors">Projects</a>
           <a href="#skills" onClick={closeMobileMenu} className="py-1 hover:text-[#00ff9d] transition-colors">Skills</a>
