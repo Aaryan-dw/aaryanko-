@@ -4,6 +4,7 @@ import React from 'react';
 const HeroSection = () => {
   return (
     <header id="home" className="min-h-screen hero-bg flex items-center pt-20 md:pt-24">
+      <section id="about" className="max-w-screen-2xl mx-auto px-8 py-24 border-t border-white/10">
       <div className="max-w-screen-2xl mx-auto px-4 md:px-8 py-6 md:py-12">
         {/* Stack on mobile, side by side on desktop */}
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-16">
@@ -104,6 +105,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      </section>
     </header>
   );
 };
