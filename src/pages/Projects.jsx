@@ -14,7 +14,7 @@ const projectsData = [
     description: "Full-stack business management system for small businesses in Nepal. Inventory tracking, sales reporting, and customer management with MERN stack.",
     tags: ["MongoDB", "Express", "React", "Node.js", "Tailwind CSS"],
     icon: "fa-store",
-    link: "https://github.com/2024-manoj/MeroByapar.git"
+    link: "https://github.com/manojctrl/MeroByapar"
   },
   {
     title: "ConvertIT",
@@ -28,7 +28,7 @@ const projectsData = [
     description: "Modern, responsive portfolio showcasing skills and projects. Built with React and Tailwind CSS featuring smooth animations and a clean dark theme.",
     tags: ["React", "Tailwind CSS", "JavaScript", "Vercel"],
     icon: "fa-globe",
-    link: "https://github.com/Aaryan-dw/aaryanko-"
+    link: "https://github.com/5aaryan6k/aaryanko-"
   }
 ];
 
