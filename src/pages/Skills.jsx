@@ -33,7 +33,7 @@ const Skills = () => {
 
       <div className="mt-16 text-center">
         <a 
-          href="https://github.com/Aaryan-dw?tab=repositories" 
+          href="https://github.com/5aaryan6k?tab=repositories" 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center gap-4 bg-white/5 px-8 py-4 rounded-full border border-white/10 hover:border-[#00ff9d] hover:bg-white/10 transition-all group"
