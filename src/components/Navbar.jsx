@@ -47,7 +47,7 @@ const Navbar = () => {
             <span className="hidden sm:inline">LinkedIn</span>
           </a>
 
-          <a href="aaryanko-\public\Aaryan Koirala CV.pdf" download="Aaryan-Koirala-CV.pdf"
+          <a href="Aaryan Koirala CV.pdf" download="Aaryan Koirala CV.pdf"
              className="px-3 md:px-5 py-1.5 md:py-2.5 bg-white text-black font-semibold rounded-full md:rounded-2xl flex items-center gap-1 md:gap-2 hover:bg-[#00ff9d] hover:text-black uppercase text-[10px] md:text-xs tracking-widest transition-all">
             <i className="fa-solid fa-download text-xs md:text-sm"></i>
             <span>CV</span>
