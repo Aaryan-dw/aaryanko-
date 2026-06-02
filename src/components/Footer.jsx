@@ -25,7 +25,7 @@ const Footer = () => {
         
         {/* Social Links */}
         <div className="mt-6 flex justify-center gap-6 text-lg">
-          <a href="https://github.com/Aaryan-dw" target="_blank" rel="noopener noreferrer" 
+          <a href="https://github.com/5aaryan6k" target="_blank" rel="noopener noreferrer" 
              className="text-zinc-500 hover:text-[#00ff9d] transition-colors">
             <i className="fa-brands fa-github"></i>
           </a>
