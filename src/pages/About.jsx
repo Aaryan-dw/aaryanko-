@@ -9,7 +9,7 @@ const About = () => {
           <h2 className="section-header text-5xl heading-font font-semibold tracking-tighter mb-6">ABOUT ME</h2>
           <p className="text-zinc-400 text-lg leading-relaxed">
             Second-year BSc (Hons) Computing student at Itahari International College. 
-            Passionate about building practical tools that solve real problems — especially for small businesses in Nepal.
+            Passionate about building practical tools that solve real problems and enhance user experiences.
           </p>
           <div className="mt-8 flex items-center gap-4">
             <div className="text-xs uppercase bg-white/10 px-5 py-3 rounded-3xl">🇳🇵 NEPAL</div>
